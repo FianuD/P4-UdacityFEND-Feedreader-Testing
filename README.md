@@ -20,9 +20,5 @@ Once loaded, test results should be displayed at the bottom of the page.
 
 * [Project Feed Reader Testing - Starter Code](https://github.com/udacity/frontend-nanodegree-feedreader)
 * [jQuery](https://jquery.com/)
-* [Normalize.css](https://necolas.github.io/normalize.css/)
-* [Handlebars](https://handlebarsjs.com/)
 * [Google's JavaScript Loader API](https://www.google.com/jsapi)
 * [Jasmine](https://jasmine.github.io/)
-* Icon: [Icomoon](https://icomoon.io/)
-* Fonts: [Google Fonts](https://fonts.google.com/)
