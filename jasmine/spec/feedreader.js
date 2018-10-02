@@ -14,9 +14,7 @@ $(function() {
     * feeds definitions, the allFeeds variable in our application.
     */
     describe('RSS Feeds', function() {
-        /* makes sure that the allFeeds variable has been defined and
-         * that it is not empty.
-         */
+        // Makes sure that the allFeeds variable has been defined and that it is not empty.
         it('are defined', function() {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
@@ -67,31 +65,30 @@ $(function() {
         });
         // Test that checks if there is at least a single .entry element
         // within the .feed container
-        it('there is a singe .entry element within the .feed container', function(){
+        it('there is a single .entry element within the .feed container', function(){
             expect($('.feed .entry').length).toBeGreaterThan(0);
         });
-
     });
 
-    /* TODO: Write a new test suite named "New Feed Selection" */
+    // Test suite named "New Feed Selection"
     describe('New Feed Selection', function(){
-        const feed = document.querySelector('.feed');
-        const firstFeed = [];
-        /* TODO: Write a test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
-         */
-        beforeEach(function(done){
-            loadFeed(0);
-            Array.from(feed.children).forEach(function(entry){
-                firstFeed.push(entry.innerText);
+        // Test to check if content is updated when a different feedId is passed to the loadFeed() function.
+        let initialContent,
+            changedContent;
+        // Runs the loadFeed function with the feedId 0 and 1,
+        // with a callback that is filling the variables with the content.
+        beforeEach(function (done) {
+            loadFeed(0, function () {
+                initialContent = $('.feed').text();
+                loadFeed(1, function () {
+                    changedContent = $('.feed').text();
+                    done();
+                });
             });
-            loadFeed(1, done);
         });
-        it('content changes',function(){
-            Array.from(feed.children).forEach(function(entry,index){
-                expect(entry.innerText === firstFeed[index]).toBe(false);
-            });
+        // Test to check if the contents have changed
+        it('contents changed', function () {
+            expect(changedContent).not.toBe(initialContent);
         });
     });
 }());
